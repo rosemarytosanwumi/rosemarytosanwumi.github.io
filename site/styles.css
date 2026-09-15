@@ -899,15 +899,62 @@ a:hover {
   color: var(--text);
 }
 
+/* ---------- Hero portrait ---------- */
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(32px, 6vw, 72px);
+}
+
+.hero-photo img {
+  display: block;
+  width: clamp(200px, 26vw, 320px);
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid var(--surface);
+  box-shadow: var(--shadow), 0 0 0 1px var(--border);
+}
+
+@media (max-width: 760px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .hero-photo {
+    order: -1;
+  }
+  .hero-photo img {
+    width: 150px;
+  }
+}
+
 /* ---------- Highlights ---------- */
 .highlights {
   padding-block: 0 clamp(64px, 10vw, 104px);
 }
 
+/* Bento layout: two wide cards, then three */
 .highlight-track {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 24px;
+}
+
+.highlight {
+  grid-column: span 2;
+}
+
+.highlight:nth-child(-n + 2) {
+  grid-column: span 3;
+}
+
+/* Taller frames for the portrait-orientation photos in the second row */
+.highlight:nth-child(n + 3) .highlight-media {
+  aspect-ratio: 4 / 5;
 }
 
 .highlight {
@@ -1000,8 +1047,13 @@ a:hover {
   .highlight-track::-webkit-scrollbar {
     display: none;
   }
-  .highlight {
+  .highlight,
+  .highlight:nth-child(-n + 2) {
+    grid-column: auto;
     scroll-snap-align: start;
+  }
+  .highlight-track .highlight .highlight-media {
+    aspect-ratio: 4 / 5;
   }
 }
 

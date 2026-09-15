@@ -1,8 +1,15 @@
-* text eol=lf
+# Normalize line endings for text files; let Git detect binaries
+* text=auto eol=lf
 
 # Denote all files that are truly binary and should not be modified
-*.ttf binary
+*.jpg binary
+*.jpeg binary
 *.png binary
+*.gif binary
 *.webp binary
+*.heic binary
+*.ico binary
+*.pdf binary
+*.ttf binary
 *.woff binary
-
+*.woff2 binary

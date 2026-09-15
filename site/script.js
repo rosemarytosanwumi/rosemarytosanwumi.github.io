@@ -69,7 +69,7 @@
         }
       });
     },
-    {rootMargin: "0px 0px -8% 0px"}
+    {rootMargin: "0px 0px -40px 0px"}
   );
   revealEls.forEach(function (el) {
     revealObserver.observe(el);
